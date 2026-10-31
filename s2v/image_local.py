@@ -30,7 +30,7 @@ def _load():
 
         torch.set_num_threads(os.cpu_count() or 4)
         pipe = StableDiffusionPipeline.from_pretrained(
-            MODEL, torch_dtype=torch.float32, variant="fp16", safety_checker=None, requires_safety_checker=False
+            MODEL, torch_dtype=torch.float32, variant="fp16", safety_checker=None, feature_extractor=None, requires_safety_checker=False
         )
         pipe.scheduler = LCMScheduler.from_config(pipe.scheduler.config)
         pipe.load_lora_weights(LORA)

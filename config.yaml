@@ -1,7 +1,7 @@
 # Cấu hình pipeline story -> video (toàn bộ dùng công cụ miễn phí)
 video:
-  width: 1080
-  height: 1920            # 9:16 (YouTube Shorts)
+  width: 720
+  height: 1280            # 9:16 (YouTube Shorts)
   fps: 24
   max_seconds: 115        # YouTube Shorts cho phép tới 3 phút; mình khoá cứng <= 2 phút
   crf: 23
@@ -21,8 +21,9 @@ image:
   providers: [local, pollinations]   # local = DreamShaper+LCM trên CPU (chạy setup_local_images.sh); pollinations = dự phòng (1 ảnh/45s)
   local_width: 512
   local_height: 768
-  local_steps: 5
-  mode: per_part          # per_part: mỗi video 1 ảnh riêng (~45s/ảnh); per_story: 1 ảnh dùng cho mọi phần (nhanh nhất)
+  local_steps: 4
+  local_guidance: 1.0
+  mode: per_story         # per_part: mỗi video 1 ảnh riêng (~45s/ảnh); per_story: 1 ảnh dùng cho mọi phần (nhanh nhất)
   width: 768
   height: 1344
   style: "beautiful traditional Vietnamese folk painting, soft watercolor and ink, warm colors, high detail, vertical composition, no text, no watermark"

@@ -22,6 +22,7 @@ def _esc(s: str) -> str:
 
 def write_ass(marks: list[dict], title: str, total: float, out: Path, v: dict) -> Path:
     W, H = v["width"], v["height"]
+    k = W / 1080  # kích thước chữ/lề thiết kế cho 1080 rộng, tự co theo độ phân giải
     head = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {W}
@@ -30,8 +31,8 @@ WrapStyle: 0
 
 [V4+ Styles]
 Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
-Style: Sub,{v['font']},{v['sub_font_size']},&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,5,2,2,70,70,330,1
-Style: Title,{v['font']},{int(v['sub_font_size']*0.8)},&H0000E5FF,&H0000E5FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,4,2,8,60,60,150,1
+Style: Sub,{v['font']},{int(v['sub_font_size']*k)},&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,{max(2,int(5*k))},2,2,{int(70*k)},{int(70*k)},{int(330*k)},1
+Style: Title,{v['font']},{int(v['sub_font_size']*0.8*k)},&H0000E5FF,&H0000E5FF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,{max(2,int(4*k))},2,8,{int(60*k)},{int(60*k)},{int(150*k)},1
 
 [Events]
 Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
