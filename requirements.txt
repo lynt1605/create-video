@@ -1,0 +1,8 @@
+edge-tts
+requests
+beautifulsoup4
+lxml
+static-ffmpeg
+pyyaml
+pillow
+gTTS

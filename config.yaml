@@ -1,0 +1,36 @@
+# Cấu hình pipeline story -> video (toàn bộ dùng công cụ miễn phí)
+video:
+  width: 1080
+  height: 1920            # 9:16 (YouTube Shorts)
+  fps: 24
+  max_seconds: 115        # YouTube Shorts cho phép tới 3 phút; mình khoá cứng <= 2 phút
+  crf: 23
+  preset: superfast
+  font: DejaVu Sans       # có đủ dấu tiếng Việt
+  sub_font_size: 64
+
+tts:
+  provider: edge               # chỉ giọng nữ edge-tts, lỗi thì thử lại lâu hơn (auto = dự phòng gTTS, giọng khác)
+  voice: vi-VN-HoaiMyNeural     # nam: vi-VN-NamMinhNeural
+  rate: "+0%"
+
+split:
+  target_words: 330       # giọng edge-tts đọc ~230 từ/phút => ~100 giây; sẽ tự cắt lại nếu voice vượt max_seconds
+
+image:
+  providers: [local, pollinations]   # local = DreamShaper+LCM trên CPU (chạy setup_local_images.sh); pollinations = dự phòng (1 ảnh/45s)
+  local_width: 512
+  local_height: 768
+  local_steps: 5
+  mode: per_part          # per_part: mỗi video 1 ảnh riêng (~45s/ảnh); per_story: 1 ảnh dùng cho mọi phần (nhanh nhất)
+  width: 768
+  height: 1344
+  style: "beautiful traditional Vietnamese folk painting, soft watercolor and ink, warm colors, high detail, vertical composition, no text, no watermark"
+  timeout: 120
+  retries: 3
+
+pipeline:
+  part_workers: 2         # số phần chạy song song
+
+# Hàng đợi truyện cho chế độ tự động (python main.py auto)
+queue_file: queue.yaml

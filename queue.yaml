@@ -1,0 +1,8 @@
+# Mỗi mục là 1 trang trên vi.wikisource.org (nội dung thuộc phạm vi công cộng).
+# image_prompt (tiếng Anh) là tuỳ chọn; bỏ trống thì hệ thống tự sinh.
+stories:
+  - title: "Sự tích trầu cau"
+    image_prompt: "two identical brothers and a young woman beside a river, areca palm and betel vine, ancient Vietnam"
+  - title: "Tấm Cám"
+  - title: "Sự tích bánh chưng bánh giầy"
+  - title: "Sự tích cây vú sữa"

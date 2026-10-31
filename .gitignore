@@ -1,0 +1,7 @@
+.venv/
+output/
+cache/
+state.json
+__pycache__/
+models/
+.auto.lock
